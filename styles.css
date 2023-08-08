@@ -1,0 +1,30 @@
+*{
+    /* outline: 1px dotted red; */
+}
+
+body{
+    align-content: center;
+    margin-top: 10%;
+}
+
+#buttons {
+    width: fit-content;
+    margin: auto;
+}
+
+.playButtons{
+    height: 7em;
+    width: 7em;
+    margin: auto;
+    
+}
+
+.scoreTracker{
+    width: fit-content;
+    margin: auto;
+}
+
+.scoreTracker h2 {
+    margin: auto;
+    text-align: center;
+}

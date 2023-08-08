@@ -2,20 +2,19 @@ let possibleChoices = ["rock", "paper", "scissors"];
 let pointsComputer = 0;
 let pointsPlayer = 0;
 
+const scoreTracker = document.querySelector('.scoreTracker');
+const scoreTrackerPlayer = document.querySelector('.scorePlayer');
+const scoreTrackerComputer = document.querySelector('.scoreComp');
+
+
+
+
+
+
 //Generates a random int number between 0 and 3 (excl.) and looks up the index in the array of choices
 function getComputerChoice(){
     let choiceIndex = Math.floor(Math.random() * 3);
     return possibleChoices[choiceIndex];
-}
-
-function getPlayerChoice(){
-    let playerChoice = prompt("Enter choice: ");
-    playerChoice = playerChoice.toLowerCase();
-    while (playerChoice != "rock" && playerChoice != "paper" && playerChoice !="scissors"){
-        playerChoice = prompt("Incorrect entry. Enter again: ");
-    }
-    return playerChoice;
-
 }
 
 function addPoint(winner){
@@ -25,12 +24,29 @@ function addPoint(winner){
     else if (winner == "Player"){
         pointsPlayer++;
     }
-    
+    updateScore();
+    if (pointsComputer == 5 || pointsPlayer == 5){
+        announceWinner();
+        removeButtons();
+    }
 }
 
-function playRound(){
+function announceWinner(){
+    let winnerMessage = pointsComputer == 5 ? "Computer wins!" : "Player wins!";
+    
+    let announcementOfWinner = document.createElement('h2');
+    announcementOfWinner.textContent = winnerMessage;
+    scoreTracker.appendChild(announcementOfWinner);
+}
+
+function playRound(player){
     let comp = getComputerChoice().toLowerCase();
-    let player = getPlayerChoice();
+    console.log(`Computer: ${comp} || Player: ${player}`);
+    
+    if (player == comp){
+        console.log("It's a tie!");
+        return;
+        }
     switch (comp) {
         case "rock":{
             if (player == "paper"){
@@ -41,11 +57,7 @@ function playRound(){
                 addPoint("Computer");
                 break;
             }
-            else{
-                console.log(`comp: ${comp} | player: ${player}`);
-                console.log("It's a tie!");
-                break;
-            }
+        
         }
         case "paper":
             {
@@ -55,11 +67,6 @@ function playRound(){
             }
             else if (player == "rock"){
                 addPoint("Computer");
-                break;
-            }
-            else{
-                console.log(`comp: ${comp} | player: ${player}`);
-                console.log("It's a tie!");
                 break;
             }
         }
@@ -72,18 +79,47 @@ function playRound(){
                 addPoint("Computer");
                 break;
             }
-            else{
-                console.log(`comp: ${comp} | player: ${player}`);
-                console.log("It's a tie!");
-                break;
-            }
         }
     }
-    console.log(`comp: ${comp} | player: ${player}`);
+    
 }
 
-do{
-    playRound();
-    console.log(`comp points: ${pointsComputer} | player points ${pointsPlayer}`);
+function updateScore(){
+    scoreTrackerPlayer.textContent = pointsPlayer;
+    scoreTrackerComputer.textContent = pointsComputer;
 }
-while (pointsComputer < 5 && pointsPlayer < 5)
+
+function removeButtons(){
+    let buttons = document.getElementById("buttons");
+    
+    while (buttons.firstChild){
+        buttons.removeChild(buttons.firstChild);
+    }
+
+    let restartButton = document.createElement('button')
+    restartButton.className = 'playButtons';
+    restartButton.innerText = "Play again";
+    restartButton.addEventListener('click', function(){
+        window.location.reload();
+    });
+    buttons.appendChild(restartButton);
+    
+}
+
+const buttonRockPlayer = document.querySelector('#rockButtonPlayer');
+buttonRockPlayer.addEventListener('click', function(e){
+    playRound('rock');    
+});
+
+const buttonScissorsPlayer = document.querySelector('#scissorsButtonPlayer');
+buttonScissorsPlayer.addEventListener('click', function(e){
+    playRound('scissors');
+});
+
+const buttonPaperPlayer = document.querySelector('#paperButtonPlayer');
+buttonPaperPlayer.addEventListener('click', function(e){
+    playRound('paper');
+});
+
+
+
