@@ -1,30 +1,79 @@
-*{
-    /* outline: 1px dotted red; */
+body {
+  align-content: center;
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    #17b886,
+    #2bc392,
+    #3ace9f,
+    #48d9ab,
+    #55e4b8
+  );
 }
 
-body{
-    align-content: center;
-    margin-top: 10%;
+@keyframes fadeText {
+  from {
+    color: darkslategrey;
+    background-image: none;
+  }
+  to {
+    color: transparent;
+
+    background-image: var(--playSign);
+  }
 }
 
 #buttons {
-    width: fit-content;
-    margin: auto;
+  width: fit-content;
+  margin: auto;
 }
 
-.playButtons{
-    height: 7em;
-    width: 7em;
-    margin: auto;
-    
+.playButton {
+  height: 7em;
+  width: 7em;
+  margin: auto;
+  border-radius: 10px;
+  color: darkslategrey;
+  font-size: 1.5em;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
 }
 
-.scoreTracker{
-    width: fit-content;
-    margin: auto;
+.playButton:hover {
+  cursor: pointer;
+  background-color: #ba83c0;
+}
+
+#rockButtonPlayer:hover {
+  --playSign: url("./assets/rock.svg");
+  color: transparent;
+  animation-name: fadeText;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+}
+
+#paperButtonPlayer:hover {
+  --playSign: url("./assets/paper.svg");
+  color: transparent;
+  animation-name: fadeText;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+}
+
+#scissorsButtonPlayer:hover {
+  --playSign: url("./assets/scissors.svg");
+  color: transparent;
+  animation-name: fadeText;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+}
+
+.scoreTracker {
+  width: fit-content;
+  margin: auto;
 }
 
 .scoreTracker h2 {
-    margin: auto;
-    text-align: center;
+  margin: auto;
+  text-align: center;
 }
