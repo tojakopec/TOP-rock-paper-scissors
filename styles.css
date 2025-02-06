@@ -1,5 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
 body {
-  align-content: center;
   height: 100vh;
   background-image: linear-gradient(
     to bottom,
@@ -9,6 +14,8 @@ body {
     #48d9ab,
     #55e4b8
   );
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes fadeText {
@@ -68,12 +75,82 @@ body {
   animation-fill-mode: forwards;
 }
 
-.scoreTracker {
-  width: fit-content;
+#scoreTracker {
+  background-color: aliceblue;
+  padding: 1em 1em;
+  height: fit-content;
+  margin: auto;
+  border: 1px solid darkslategrey;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+#scoreTracker h2 {
+  margin: auto;
+  text-align: center;
+}
+
+#scoreTitles {
+  display: flex;
+  margin: auto;
+  margin-top: 0.5em;
+  gap: 3em;
+  padding: 0 1em;
+  font-size: 1.5em;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+}
+
+#scorePanel {
+  display: flex;
+  gap: 2em;
+  padding: 0 4em;
+  background-color: antiquewhite;
+  margin: auto;
+  border: 1px solid darkslategrey;
+  border-radius: 1em;
+}
+
+.score {
+  font-size: 5em;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
   margin: auto;
 }
 
-.scoreTracker h2 {
+#playingField {
+  display: flex;
+  gap: 2em;
+  align-self: center;
+}
+
+.selection {
+  width: 164px;
+  height: 164px;
+  border-radius: 50%;
+}
+
+.winnerMessage {
+  font-size: 2em;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  padding-top: 1em;
+}
+
+#result {
+  font-size: 1.5em;
+  font-family: "Courier New", Courier, monospace;
   margin: auto;
-  text-align: center;
+}
+
+.celebrate {
+  font-size: 4em;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  background-color: coral;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  border: 1px solid darkslategrey;
+  box-shadow: 2px 2px 2px darkslategrey;
 }

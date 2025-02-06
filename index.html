@@ -13,12 +13,24 @@
       <button class="playButton" id="paperButtonPlayer">Paper</button>
       <button class="playButton" id="scissorsButtonPlayer">Scissors</button>
     </div>
+    <div id="playingField">
+      <div class="selection" id="selectionPlayer"></div>
+      <div class="selection" id="selectionComputer"></div>
+    </div>
+    <div id="result">
+      <p id="resultText">Make your move!</p>
+    </div>
 
-    <div class="scoreTracker">
-      <h1>Computer : Player</h1>
-      <h2>
-        <span class="scoreComp">0</span>:<span class="scorePlayer">0</span>
-      </h2>
+    <div id="scoreTracker">
+      <div id="scorePanel">
+        <p class="score" id="playerScore">0</p>
+        <p class="score">:</p>
+        <p class="score" id="computerScore">0</p>
+      </div>
+      <div id="scoreTitles">
+        <p class="title">Player</p>
+        <p class="title">Computer</p>
+      </div>
     </div>
   </body>
 </html>
